@@ -1,0 +1,62 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a
+      class="site-brand"
+      href="{{ '/' | relative_url }}"
+      aria-label="Kembali ke Beranda Jus Buah Segar"
+    >
+      <span class="brand-mark" aria-hidden="true">🍹</span>
+
+      <span class="brand-text">
+        <strong>Jus Buah Segar</strong>
+        <small>Segar setiap hari</small>
+      </span>
+    </a>
+
+    <button
+      id="mobile-menu-button"
+      class="mobile-menu-button"
+      type="button"
+      aria-label="Buka menu navigasi"
+      aria-controls="site-navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-navigation" class="site-navigation" aria-label="Navigasi utama">
+      <ul>
+        <li>
+          <a href="{{ '/' | relative_url }}">Beranda</a>
+        </li>
+
+        <li>
+          <a href="{{ '/menu' | relative_url }}">Menu</a>
+        </li>
+
+        <li>
+          <a href="{{ '/gift' | relative_url }}">Gift</a>
+        </li>
+
+        <li>
+          <a href="{{ '/tentang' | relative_url }}">Tentang</a>
+        </li>
+
+        <li>
+          <a href="{{ '/faq' | relative_url }}">FAQ</a>
+        </li>
+
+        <li>
+          <a
+            class="nav-order-button"
+            href="{{ '/pesan' | relative_url }}"
+          >
+            Pesan Sekarang
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
