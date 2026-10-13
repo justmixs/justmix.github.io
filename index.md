@@ -69,7 +69,7 @@ description: Jus buah segar, menu pilihan, promo, gift, dan pemesanan online.
   <div class="promo-box">
     <h3>🎉 Promo Saat Ini</h3>
     <p>
-      Beli 3 jus, gratis 1 Jus Jeruk selama promo masih berlaku.
+      Mohon maaf, Saat ini belum tersedia promo.
       Silakan konfirmasi melalui WhatsApp sebelum melakukan pembayaran.
     </p>
   </div>
