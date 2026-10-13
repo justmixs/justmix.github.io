@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Pertanyaan yang sering ditanyakan pelanggan Jus Buah Segar.
+description: Pertanyaan yang sering ditanyakan pelanggan JustMixs - Jus Buah Segar.
 ---
 
 <header class="page-header">
