@@ -1,5 +1,5 @@
 ---
-title: Gift Jus Buah
+title: Gift
 description: Kirimkan jus buah sebagai gift untuk orang tersayang.
 ---
 
