@@ -1,0 +1,24 @@
+title: Jus Buah Segar
+description: Jus buah segar pilihan untuk menemani hari Anda.
+url: "https://oviet711.github.io"
+baseurl: "/jusbuah.github.io"
+
+lang: id
+timezone: Asia/Jakarta
+
+features:
+  testimonials: false
+  gift_recipients: false
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
