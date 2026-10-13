@@ -5,7 +5,7 @@ description: Cerita, nilai, dan komitmen Jus Buah Segar.
 
 <header class="page-header">
   <p class="eyebrow">Tentang brand</p>
-  <h1>🍊 Tentang Jus Buah Segar</h1>
+  <h1>🍊 Tentang JustMixs </h1>
   <p class="page-intro">
     Kami ingin menghadirkan pilihan minuman buah yang segar, praktis,
     dan nyaman dipesan untuk aktivitas sehari-hari.
