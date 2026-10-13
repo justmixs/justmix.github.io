@@ -42,7 +42,7 @@ description: Pesan Jus Buah Segar melalui WhatsApp.
         <option value="Jus Jeruk">Jus Jeruk — Rp15.000</option>
         <option value="Jus Mangga">Jus Mangga — Rp18.000</option>
         <option value="Jus Alpukat">Jus Alpukat — Rp20.000</option>
-        <option value="Mixed Berry">Mixed Berry — Rp22.000</option>
+        <option value="Mixed Berry">Mixed Strobery — Rp22.000</option>
         <option value="Jus Semangka">Jus Semangka — Rp15.000</option>
         <option value="Jus Nanas">Jus Nanas — Rp16.000</option>
       </select>
@@ -83,7 +83,7 @@ description: Pesan Jus Buah Segar melalui WhatsApp.
     </button>
 
     <p class="form-help">
-      Nomor tujuan: 0812-3456-7890. Detail harga, ongkir, ketersediaan menu,
+      Nomor tujuan: 0812-8922-1052. Detail harga, ongkir, ketersediaan menu,
       dan promo akan dikonfirmasi oleh toko.
     </p>
   </form>
@@ -107,10 +107,10 @@ description: Pesan Jus Buah Segar melalui WhatsApp.
       const jumlah = document.getElementById("jumlah").value;
       const catatan = document.getElementById("catatan").value.trim();
 
-      const nomorWhatsApp = "6281234567890";
+      const nomorWhatsApp = "6281289221052";
 
       const lines = [
-        "Halo Jus Buah Segar, saya ingin pesan:",
+        "Halo JustMixs, saya ingin pesan:",
         "",
         `Nama: ${nama}`,
         `Alamat: ${alamat}`,
