@@ -391,189 +391,123 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    /*
-      URL endpoint Cloudflare Worker.
-      Tidak ada API key, Hugging Face token, Cloudflare token, atau Account ID di browser.
-    */
-    const WORKER_URL =
-      "https://justmixs-ai-bot.justmix910.workers.dev/chat";
-    
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Konfigurasi Endpoint Cloudflare Workers AI Anda
+    const WORKER_URL = 'https://workers.dev';
 
-    const chatbotToggle = document.getElementById("chatbot-toggle");
-    const chatbotWindow = document.getElementById("chatbot-window");
-    const chatbotClose = document.getElementById("chatbot-close");
-    const chatbotForm = document.getElementById("chatbot-form");
-    const chatbotInput = document.getElementById("chatbot-input");
-    const chatbotMessages = document.getElementById("chatbot-messages");
-    const chatbotSend = document.getElementById("chatbot-send");
-    const quickQuestions = document.querySelectorAll(".quick-question");
+    // 2. Selektor Elemen DOM
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const closeBtn = document.getElementById('chatbot-close');
+    const chatWindow = document.getElementById('chatbot-window');
+    const chatForm = document.getElementById('chatbot-form');
+    const chatInput = document.getElementById('chatbot-input');
+    const messagesContainer = document.getElementById('chatbot-messages');
+    const sendBtn = document.getElementById('chatbot-send');
+    const quickQuestions = document.querySelectorAll('.quick-question');
 
-    if (
-      !chatbotToggle ||
-      !chatbotWindow ||
-      !chatbotClose ||
-      !chatbotForm ||
-      !chatbotInput ||
-      !chatbotMessages ||
-      !chatbotSend
-    ) {
-      return;
+    let isTyping = false;
+
+    // 3. Fungsi Buka & Tutup Jendela Chat
+    function toggleChat(forceOpen) {
+      const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : chatWindow.hasAttribute('hidden');
+      
+      if (shouldOpen) {
+        chatWindow.removeAttribute('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        chatInput.focus();
+        scrollToBottom();
+      } else {
+        chatWindow.setAttribute('hidden', '');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
     }
 
-    function openChatbot() {
-      chatbotWindow.hidden = false;
-      chatbotToggle.setAttribute("aria-expanded", "true");
+    toggleBtn.addEventListener('click', () => toggleChat());
+    closeBtn.addEventListener('click', () => toggleChat(false));
 
-      window.setTimeout(function () {
-        chatbotInput.focus();
-      }, 100);
+    // 4. Fungsi Menambahkan Pesan ke Layar
+    function addMessage(text, sender) {
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('message', sender);
+      msgDiv.textContent = text;
+      
+      // Jika AI sedang memikirkan jawaban, pasang kelas penanda khusus
+      if (sender === 'typing') {
+        msgDiv.id = 'chatbot-typing-indicator';
+        msgDiv.classList.add('typing');
+      }
+
+      messagesContainer.appendChild(msgDiv);
+      scrollToBottom();
     }
 
-    function closeChatbot() {
-      chatbotWindow.hidden = true;
-      chatbotToggle.setAttribute("aria-expanded", "false");
-      chatbotToggle.focus();
+    function removeTypingIndicator() {
+      const indicator = document.getElementById('chatbot-typing-indicator');
+      if (indicator) indicator.remove();
     }
 
     function scrollToBottom() {
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    function addMessage(text, type, extraClass = "") {
-      const div = document.createElement("div");
-      div.className = `message ${type} ${extraClass}`.trim();
-      div.textContent = text;
+    // 5. Fungsi Mengirim Pertanyaan ke Cloudflare AI Workers
+    async function sendMessageToAI(text) {
+      if (!text.trim() || isTyping) return;
 
-      chatbotMessages.appendChild(div);
-      scrollToBottom();
+      // Tampilkan pesan pengguna di layar
+      addMessage(text, 'user');
+      chatInput.value = '';
+      
+      // Kunci input & tombol kirim
+      isTyping = true;
+      chatInput.disabled = true;
+      sendBtn.disabled = true;
 
-      return div;
-    }
-
-    function setLoading(isLoading) {
-      chatbotSend.disabled = isLoading;
-      chatbotInput.disabled = isLoading;
-      chatbotSend.textContent = isLoading ? "..." : "Kirim";
-    }
-
-    async function askChatbot(question) {
-      const controller = new AbortController();
-
-      /*
-        Timeout 20 detik:
-        jika Worker/AI terlalu lama merespons, browser berhenti menunggu
-        dan memberi fallback yang ramah kepada pengunjung.
-      */
-      const timeoutId = window.setTimeout(function () {
-        controller.abort();
-      }, 20000);
+      // Tampilkan status indikator mengetik
+      addMessage('Sedang mengetik...', 'typing');
 
       try {
         const response = await fetch(WORKER_URL, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            message: question
-          }),
-          signal: controller.signal
+          body: JSON.stringify({ message: text })
         });
 
-        let data = null;
+        const data = await response.json();
+        removeTypingIndicator();
 
-        try {
-          data = await response.json();
-        } catch {
-          throw new Error("Respons chatbot tidak valid.");
+        if (response.ok && data.reply) {
+          addMessage(data.reply, 'bot');
+        } else {
+          addMessage(data.error || 'Maaf, terjadi gangguan koneksi ke server.', 'bot');
         }
-
-        if (!response.ok) {
-          throw new Error(
-            data?.reply ||
-            data?.error ||
-            "Chatbot sedang tidak dapat dihubungi."
-          );
-        }
-
-        return data?.reply ||
-          "Maaf, saya belum mendapatkan jawaban. Silakan hubungi WhatsApp kami.";
-      } finally {
-        window.clearTimeout(timeoutId);
-      }
-    }
-
-    async function sendQuestion(question) {
-      const text = String(question || "").trim();
-
-      if (!text) {
-        return;
-      }
-
-      if (text.length > 400) {
-        addMessage(
-          "Pertanyaan terlalu panjang. Maksimum 400 karakter, ya.",
-          "bot"
-        );
-        return;
-      }
-
-      addMessage(text, "user");
-      chatbotInput.value = "";
-      setLoading(true);
-
-      const typingMessage = addMessage(
-        "Sedang mengetik...",
-        "bot",
-        "typing"
-      );
-
-      try {
-        const reply = await askChatbot(text);
-        typingMessage.remove();
-        addMessage(reply, "bot");
       } catch (error) {
-        console.error("Chatbot error:", error);
-
-        typingMessage.remove();
-
-        addMessage(
-          "Maaf, asisten sedang tidak tersedia. Untuk bantuan cepat atau pemesanan, silakan hubungi WhatsApp kami.",
-          "bot"
-        );
+        removeTypingIndicator();
+        addMessage('Gagal terhubung dengan asisten virtual. Periksa internet Anda.', 'bot');
+        console.error('Error fetching chatbot:', error);
       } finally {
-        setLoading(false);
-        chatbotInput.focus();
+        // Buka kembali kunci input
+        isTyping = false;
+        chatInput.disabled = false;
+        sendBtn.disabled = false;
+        chatInput.focus();
       }
     }
 
-    chatbotToggle.addEventListener("click", function () {
-      if (chatbotWindow.hidden) {
-        openChatbot();
-      } else {
-        closeChatbot();
-      }
+    // 6. Handle Pengiriman via Form Submit
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      sendMessageToAI(chatInput.value);
     });
 
-    chatbotClose.addEventListener("click", closeChatbot);
-
-    chatbotForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      sendQuestion(chatbotInput.value);
-    });
-
-    quickQuestions.forEach(function (button) {
-      button.addEventListener("click", function () {
-        openChatbot();
-        sendQuestion(button.textContent);
+    // 7. Handle Tombol Pertanyaan Cepat (Quick Questions)
+    quickQuestions.forEach(button => {
+      button.addEventListener('click', () => {
+        const questionText = button.textContent.trim();
+        sendMessageToAI(questionText);
       });
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && !chatbotWindow.hidden) {
-        closeChatbot();
-      }
     });
   });
 </script>
