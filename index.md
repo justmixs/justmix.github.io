@@ -207,7 +207,7 @@ description: Jus buah segar, menu pilihan, promo, gift, dan pemesanan online.
       </p>
       <a
         class="btn"
-        href="https://www.google.com/maps/search/?api=1&query=Jl.+Buah+Segar+No.+12+Jakarta+Selatan"
+        href="https://www.google.com/maps/search/?api=1&query=Just+Mix+Jl.+Mawar+Raya+Depan+SDN+Kapuk+09+10+Jakarta+Barat"
         target="_blank"
         rel="noopener"
       >
