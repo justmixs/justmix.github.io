@@ -3,7 +3,7 @@ title: Pesan Jus
 description: Pesan Jus Buah Segar melalui WhatsApp.
 ---
 
-<head><link rel="canonical" href="https://github.io" />
+<head><link rel="canonical" href="https://justmixs.github.io/" />
 </head>
 
 <header class="page-header">
@@ -33,7 +33,7 @@ description: Pesan Jus Buah Segar melalui WhatsApp.
       <textarea
         id="alamat"
         name="alamat"
-        placeholder="Jl. ..., nomor, kelurahan, kecamatan, kota"
+        placeholder="Jl. ..., nomor, rt/rw, kelurahan, kecamatan, kota"
         required
       ></textarea>
     </div>
