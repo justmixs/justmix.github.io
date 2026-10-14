@@ -169,6 +169,18 @@ description: Jus buah segar, menu pilihan, promo, gift, dan pemesanan online.
     </article>
 
     <article class="info-card">
+      <h3>🍽️ Kuliner Lainnya</h3>
+      <p>
+        Temukan informasi pilihan makanan, camilan, atau layanan kuliner lain
+        yang tersedia dari kami.
+      </p>
+    
+      <a class="btn" href="{{ '/kuliner/' | relative_url }}">
+        Lihat Kuliner
+      </a>
+    </article>
+
+    <article class="info-card">
       <h3>🛒 Pesan Online</h3>
       <p>
         Pesan melalui WhatsApp atau aplikasi pengantaran makanan yang tersedia.
