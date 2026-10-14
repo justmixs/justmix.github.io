@@ -3,6 +3,9 @@ title: Pesan Jus
 description: Pesan Jus Buah Segar melalui WhatsApp.
 ---
 
+<head><link rel="canonical" href="https://github.io" />
+</head>
+
 <header class="page-header">
   <p class="eyebrow">Pesan dengan mudah</p>
   <h1>🛒 Pesan Jus via WhatsApp</h1>
