@@ -3,6 +3,9 @@ title: Gift
 description: Kirimkan jus buah sebagai gift untuk orang tersayang.
 ---
 
+<head><link rel="canonical" href="https://justmixs.github.io/" />
+</head>
+
 <header class="page-header">
   <p class="eyebrow">Berbagi kesegaran</p>
   <h1>🎁 Gift Jus Buah</h1>
