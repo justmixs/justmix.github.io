@@ -3,7 +3,7 @@ title: Menu Jus Buah
 description: Daftar menu Jus Buah Segar dan harga ukuran regular maupun jumbo.
 ---
 
-<head><link rel="canonical" href="https://https://justmixs.github.io/" />
+<head><link rel="canonical" href="https://justmixs.github.io/" />
 </head>
 
 <header class="page-header">
