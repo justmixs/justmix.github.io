@@ -44,14 +44,14 @@ permalink: /kuliner/
 
       <ul class="business-list">
         <li>Menu andalan: Nasi ayam, rice bowl, atau paket makan</li>
-        <li>Area layanan: Jakarta Selatan dan sekitarnya</li>
+        <li>Area layanan: Jakarta Barat dan sekitarnya</li>
         <li>Pemesanan: WhatsApp dan aplikasi pengantaran</li>
       </ul>
 
       <div class="business-actions">
         <a
           class="btn btn-primary"
-          href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20menu%20makanan."
+          href="https://wa.me/6281289221052?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20menu%20makanan."
           target="_blank"
           rel="noopener"
         >
