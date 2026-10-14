@@ -3,6 +3,9 @@ title: Tentang Kami
 description: Cerita, nilai, dan komitmen Jus Buah Segar.
 ---
 
+<head><link rel="canonical" href="https://github.io" />
+</head>
+
 <header class="page-header">
   <p class="eyebrow">Tentang brand</p>
   <h1>🍊 Tentang JustMixs </h1>
