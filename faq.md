@@ -3,6 +3,9 @@ title: FAQ
 description: Pertanyaan yang sering ditanyakan pelanggan JustMixs - Jus Buah Segar.
 ---
 
+<head><link rel="canonical" href="https://justmixs.github.io/" />
+</head>
+
 <header class="page-header">
   <p class="eyebrow">Bantuan pelanggan</p>
   <h1>❓ Pertanyaan yang Sering Ditanyakan</h1>
