@@ -3,6 +3,9 @@ title: Menu Jus Buah
 description: Daftar menu Jus Buah Segar dan harga ukuran regular maupun jumbo.
 ---
 
+<head><link rel="canonical" href="https://github.io" />
+</head>
+
 <header class="page-header">
   <p class="eyebrow">Pilihan segar</p>
   <h1>🥤 Menu Jus Buah</h1>
