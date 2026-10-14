@@ -2,6 +2,8 @@
 title: Beranda
 description: Jus buah segar, menu pilihan, promo, gift, dan pemesanan online.
 ---
+<head><link rel="canonical" href="https://github.io" />
+</head>
 
 <section class="hero">
   <div class="hero-content">
