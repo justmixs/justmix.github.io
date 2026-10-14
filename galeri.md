@@ -3,6 +3,9 @@ title: Galeri Produk
 description: Galeri pilihan produk Jus Buah Segar.
 ---
 
+<head><link rel="canonical" href="https://justmixs.github.io/" />
+</head>
+
 <header class="page-header">
   <p class="eyebrow">Lihat produk kami</p>
   <h1>📸 Galeri Jus Buah</h1>
